@@ -16,9 +16,12 @@ namespace WebApi.Controllers
         }
         // POST api/<FileController>
         [HttpPost("api/file/validation")]
-        public string Post(IFormFile formFile)
+        [ProducesResponseType(StatusCodes.Status415UnsupportedMediaType)]
+        public IActionResult Post(IFormFile formFile)
         {
-            return _fileService.FileValidation(formFile.OpenReadStream());
+            if (formFile.ContentType != "text/plain")
+                return new UnsupportedMediaTypeResult();
+            return Ok(_fileService.FileValidation(formFile.OpenReadStream()));
         }
 
 

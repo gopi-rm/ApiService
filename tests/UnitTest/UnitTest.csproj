@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Files\Emptyfile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Files\InValidfile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
